@@ -1,0 +1,15 @@
+<h3>My Todo List</h3>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Add a new task..." required>
+    <button type="submit">Add Task</button>
+</form>
+
+<ul>
+    {% for task in tasks %}
+    <li>
+        {{task.title}}
+        <a href="{% url 'delete' task.id %}" style="color: red;text-decoration: none;margin-left: 10px;">[Delete]</a>
+    </li>
+    {% endfor %}
+</ul>
